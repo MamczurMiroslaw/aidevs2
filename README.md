@@ -8,6 +8,14 @@ We have 2 kind of homeworks
 
 ## How to run python code solutions
 
+### Idea of python homeworks
+Each task has the following scheme:
+1. fetch `token` from aidevs' server (my function `get_auth_token`)
+2. fetch task's input data (my function `get_task`)
+3. process the data with gpt or algorithms
+4. post the result to the answer endpoint (my function `send_answer`)
+
+
 ### Api Keys
 
 You need to first to export two keys
@@ -20,4 +28,3 @@ export OPENAI_API_KEY=<YOUR_OPENAPI_KEY>
 App keys can be retrieved from:
 - `AIDEVS_API_KEY` - [https://zadania.aidevs.pl/](https://zadania.aidevs.pl/)
 - `OPENAI_API_KEY` - [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
-
