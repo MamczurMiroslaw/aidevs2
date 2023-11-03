@@ -44,3 +44,29 @@ def send_question(token, question, print_response=False):
         print(f"Failed to get response:(. Error code: {response.status_code}")
 
     return response_data
+
+
+# function used in C02L02 to find 1 most important word
+def find_word_to_filter(txt):
+    conversation = [
+            {"role": "system", "content": """Twoim zadaniem jest zwrócić tylko imioe z podanego niżej tekstu.
+Zwracaj tylko 1 imię. 
+Jeśli nie możesz znaleźć imienia zwróć Twoim zdaniem najważniejsze 1 słowo, które jest rzeczownikiem.
+Przykład:
+zdanie:`Abdon ma czarne oczy, średniej długości włosy i pracuje jako prawnik`
+Twoja odpowiedź: 'Abdon'
+Zdanie użytkownika jest oznaczone w ###
+"""},
+        {"role": "user", "content": f"###{txt}###"}
+        ]
+
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=conversation,
+        max_tokens=20
+    )
+
+    word = response.choices[0].message.content
+
+    return word
+
