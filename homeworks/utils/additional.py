@@ -70,3 +70,53 @@ Zdanie użytkownika jest oznaczone w ###
 
     return word
 
+
+def download_json_data_from_url(url):
+    try:
+        # Send an HTTP GET request to the URL
+        response = requests.get(url)
+
+        # Check if the request was successful (status code 200)
+        if response.status_code == 200:
+            # Parse JSON data
+            json_data = response.json()
+
+            print("JSON data downloaded successfully.")
+            return json_data
+        else:
+            print(f"Failed to retrieve data. Status code: {response.status_code}")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+
+# function used in C04L01 to download actual currency for specific value
+def currency_rate(code="USD"):
+    url = f"http://api.nbp.pl/api/exchangerates/rates/A/{code}/"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        data = response.json()
+        currency = data['rates'][0]['mid']
+        print(f'I have value for {code}: {currency}')
+        return currency
+    else:
+        print(f"Failed to get response:(. Error code: {response.status_code}")
+        print(f"Reason: {response.reason}")
+        print(f"Text: {response.text}")
+
+
+# function used in C04L01 to download country informations
+def country_population(country="poland"):
+    url = f"https://restcountries.com/v3.1/name/{country}"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        data = response.json()
+        pop = data[0]['population']
+        print(f'I have value for {country}: {pop}')
+        return pop
+    else:
+        print(f"Failed to get response:(. Error code: {response.status_code}")
+        print(f"Reason: {response.reason}")
+        print(f"Text: {response.text}")

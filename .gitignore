@@ -13,3 +13,6 @@ venv/*
 
 # my temp folders and files
 tmp/*
+
+# lessons
+lessons/
