@@ -1,14 +1,14 @@
 import requests
-import openai
 
+from openai import OpenAI
 from homeworks.utils.aidevsApi import API_KEY_OPENAI
 
-openai.api_key = API_KEY_OPENAI
+client = OpenAI(api_key=API_KEY_OPENAI)
 
 
 # function used in C01L04 to return final moderate flag for input text
 def moderate_txt(text_to_moderate, print_response=False):
-    response = openai.Moderation.create(
+    response = client.moderations.create(
         text_to_moderate,
     )
 
@@ -60,7 +60,7 @@ Zdanie użytkownika jest oznaczone w ###
         {"role": "user", "content": f"###{txt}###"}
         ]
 
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=conversation,
         max_tokens=20
@@ -88,6 +88,35 @@ def download_json_data_from_url(url):
 
     except Exception as e:
         print(f"An error occurred: {e}")
+
+
+# download arch from unknown news
+def download_arch():
+    # URL of the JSON file
+    url = 'https://unknow.news/archiwum.json'
+
+    # Send a GET request to the URL
+    response = requests.get(url)
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Parse the JSON content into a DataFrame
+        json_arch = response.json()
+        return json_arch
+    else:
+        print(f"Failed to get response:(. Error code: {response.status_code}")
+        print(f"Reason: {response.reason}")
+
+
+# Function to calculate OpenAI Ada-02 embeddings
+def calculate_embeddings(text):
+    # Call the OpenAI API to get the embedding
+    response = client.embeddings.create(
+        input=text,
+        model="text-embedding-ada-002"
+    )
+    # return generated embeddings
+    return response.data[0].embedding
 
 
 # function used in C04L01 to download actual currency for specific value

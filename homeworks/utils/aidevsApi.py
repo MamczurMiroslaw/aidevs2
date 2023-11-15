@@ -53,7 +53,7 @@ def get_task(token_key, print_task=False):
 
 
 # function to send responses to AI Devs
-def send_answer(token, answer_value, prnt=False):
+def send_answer(token, answer_value, print_answer=False):
     url = "https://zadania.aidevs.pl/answer/" + token
 
     # Create a dictionary with the 'answer' field as an array
@@ -69,8 +69,8 @@ def send_answer(token, answer_value, prnt=False):
     # sending post request
     response = requests.post(url, data=data_json, headers=headers)
 
-    if prnt:
-        print(f"requests.post('{url}', data={data_json}, headers={headers})")
+    if print_answer:
+        print(f"answer: {data}")
 
     if response.status_code == 200:
         print('Sending answer: done! :)')
