@@ -1,5 +1,6 @@
 # aidevs2
 My solutions for course https://www.aidevs.pl/ 
+![](images/ai_devs.png)
 
 ## Homeworks
 We have 2 kind of homeworks
@@ -28,3 +29,20 @@ export OPENAI_API_KEY=<YOUR_OPENAPI_KEY>
 App keys can be retrieved from:
 - `AIDEVS_API_KEY` - [https://zadania.aidevs.pl/](https://zadania.aidevs.pl/)
 - `OPENAI_API_KEY` - [https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)
+
+### My Own API
+In week 4 & 5 there was a need to create own API to anwer questions.
+
+My API is added in folder `homeworks/my_api`.
+I was adding to this same API new endpoints for next lessons.
+
+I used `fastapi`, created `docker` and served it on Azure Cloud as webapp.
+
+### My results
+I have done all tasks!
+![](./images/tasks.png)
+
+![](./images/final.png)
+
+### Certificate
+![](./images/aidevs_EN.png)
