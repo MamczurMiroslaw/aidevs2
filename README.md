@@ -2,6 +2,10 @@
 My solutions for course https://www.aidevs.pl/ 
 ![](images/ai_devs.png)
 
+## ⚠️ Important Notice
+Please note that the code within this repository is specifically tailored to the context of the AI Devs-2 course lessons.
+Without the accompanying course material and explanations, the code may not be fully understandable or functional.
+
 ## Homeworks
 We have 2 kind of homeworks
 - aidevs_platforms - this are homeworks on AI dev platform. Solutions are just screens :)
